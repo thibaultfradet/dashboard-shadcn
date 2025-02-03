@@ -1,0 +1,48 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Projet {
+  id               Int      @id @default(autoincrement())
+  nom              String
+  description      String?
+  date_debut       DateTime
+  estimation_temps Int
+  statutId         Int
+  statut           Statut   @relation(fields: [statutId], references: [id])
+  taches           Tache[]
+}
+
+model Tache {
+  id               Int      @id @default(autoincrement())
+  projet_id        Int
+  nom              String
+  description      String?
+  date_debut       DateTime
+  estimation_temps Int
+  statutId         Int
+  statut           Statut   @relation(fields: [statutId], references: [id])
+  taches_temps     TachesTemps[]
+  projet           Projet   @relation(fields: [projet_id], references: [id])
+}
+
+model TachesTemps {
+  id               Int      @id @default(autoincrement())
+  tache_id         Int
+  date             DateTime
+  temps            Int
+  tache            Tache    @relation(fields: [tache_id], references: [id])
+}
+
+model Statut {
+  id               Int      @id @default(autoincrement())
+  nom              String
+  description      String?
+  projets          Projet[]
+  taches           Tache[]
+}
