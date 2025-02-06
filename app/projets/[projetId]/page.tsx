@@ -1,29 +1,36 @@
+import { TableTache } from "@/src/lib/components/personal/TableTaches";
 import { prisma } from "@/src/lib/prisma";
 
-export default async function viewProjet(props: {
+export default async function ViewProjet({
+  params,
+}: {
   params: { projetId: string };
 }) {
-  const projetId = parseInt(props.params.projetId, 10);
+  const projetIdString = params.projetId;
+  const projetId = parseInt(projetIdString, 10);
 
+  // Fetch the projet data
   const projet = await prisma.projet.findUnique({
     where: { id: projetId },
     include: {
-      taches: true,
+      taches: {
+        include: {
+          statut: true,
+        },
+      },
       statut: true,
     },
   });
 
-  if (projet == null) {
-    return (
-      <div className="flex flex-col items-center gap-7">
-        <h1 className="text-5xl">Aucun projet trouvé</h1>
-      </div>
-    );
-  } else {
-    return (
-      <div className="flex flex-col items-center gap-7">
-        <h1 className="text-5xl">Projet {projet.nom}</h1>
-      </div>
-    );
+  if (!projet) {
+    return <div>Projet not found</div>;
   }
+
+  return (
+    <div>
+      <h1>{projet.nom}</h1>
+      <p>{projet.description}</p>
+      <TableTache taches={projet.taches} />
+    </div>
+  );
 }
