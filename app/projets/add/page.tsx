@@ -1,4 +1,4 @@
-"use client"; // Ensure this is a client component if you're using hooks like useState
+"use client";
 import { FormProjet } from "@/src/lib/components/personal/FormProjet";
 
 export default function AddProjet() {

@@ -21,7 +21,8 @@ export function FormProjet({ projetId = null }: { projetId?: string | null }) {
   const [isClient, setIsClient] = useState(false); // Track client-side rendering
   const [projectData, setProjectData] = useState<any>(null); // State to store fetched project data
 
-  const serverAction = projetId ? "editProjet" : "createProjet";
+  // A CHANGER
+  const serverAction = projetId ? "editProjetAction" : "createProjetAction";
 
   useEffect(() => {
     setIsClient(true); // Set isClient to true after hydration

@@ -17,7 +17,7 @@ export default async function Projets() {
 
   return (
     <div className="flex flex-col items-center gap-7">
-      <div className=" w-full text-left flex items-center justify-between m-6 p-6">
+      <div className="w-full text-left flex items-center justify-between m-6 p-6">
         <h1 className="text-5xl">Liste des projets</h1>
         <Button asChild>
           <Link href="/projets/add">Créer un projet</Link>
@@ -26,7 +26,7 @@ export default async function Projets() {
       <div className="grid grid-cols-3 gap-7">
         {projets.map((projet) => (
           <Link href={`/projets/${projet.id}`} key={projet.id}>
-            <Card>
+            <Card className="bg-slate-900">
               <CardHeader>
                 <CardTitle>{projet.nom}</CardTitle>
               </CardHeader>

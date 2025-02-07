@@ -1,5 +1,7 @@
 import { TableTache } from "@/src/lib/components/personal/TableTaches";
+import { Button } from "@/src/lib/components/ui/button";
 import { prisma } from "@/src/lib/prisma";
+import Link from "next/link";
 
 export default async function ViewProjet({
   params,
@@ -27,9 +29,18 @@ export default async function ViewProjet({
   }
 
   return (
-    <div>
-      <h1>{projet.nom}</h1>
-      <p>{projet.description}</p>
+    <div className="w-full">
+      <div className="w-full text-left flex items-center justify-between m-6 p-6">
+        <div className="flex flex-col">
+          <h1>{projet.nom}</h1>
+          <p>{projet.description}</p>
+        </div>
+        <Button asChild>
+          <Link href={`/projets/${projet.id}/taches/add`}>
+            Ajouter une tâche
+          </Link>
+        </Button>
+      </div>
       <TableTache taches={projet.taches} />
     </div>
   );

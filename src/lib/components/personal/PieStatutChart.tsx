@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import * as React from "react";
@@ -36,23 +37,31 @@ export default function PieStatutChart(data: any) {
       data = Object.values(data);
     }
   }
-  const chartData = data[0].map((item, index: number) => ({
-    label: item.label,
-    count: item.count,
-    fill: colors[index % colors.length],
-  }));
+  const chartData = data[0].map(
+    (item: { label: string; count: number }, index: number) => ({
+      label: item.label,
+      count: item.count,
+      fill: colors[index % colors.length],
+    })
+  );
 
   // Accumulation des données
-  const chartConfig = chartData.reduce((acc, item, index: number) => {
-    acc[item.label] = {
-      label: item.label,
-      color: colors[index % colors.length],
-    };
-    return acc;
-  }, {} as ChartConfig);
+  const chartConfig = chartData.reduce(
+    (acc: any, item: { label: string; color: any }, index: number) => {
+      acc[item.label] = {
+        label: item.label,
+        color: colors[index % colors.length],
+      };
+      return acc;
+    },
+    {} as ChartConfig
+  );
 
   // Calcul du total des tâches
-  const totalTaches = chartData.reduce((acc, curr) => acc + curr.count, 0);
+  const totalTaches = chartData.reduce(
+    (acc: any, curr: any) => acc + curr.count,
+    0
+  );
 
   return (
     <Card className="flex flex-col">
