@@ -1,6 +1,7 @@
+"use server";
 import { prisma } from "../../prisma";
 
-export default async function getNbTachesTermine() {
+export default async function getNbTachesTermineAction() {
   const statutIdTermine = await prisma.statut.findFirst({
     where: {
       nom: "Terminé",

@@ -1,27 +1,22 @@
 import getStatNbStatutTacheAction from "@/src/lib/actions/getStatNbStatutTache.action";
 import getTacheRapideAction from "@/src/lib/actions/getTacheRapide.action";
-import getNbTachesAFaire from "@/src/lib/actions/statNbTachesHome/nbTachesAFaire.action";
-import getNbTachesEnCours from "@/src/lib/actions/statNbTachesHome/nbTachesEnCours.action";
-import getNbTachesTermine from "@/src/lib/actions/statNbTachesHome/nbTachesTermine.action";
-import getNbTachesTotal from "@/src/lib/actions/statNbTachesHome/nbTachesTotal.action";
+import getNbTachesAFaireAction from "@/src/lib/actions/statNbTachesHome/nbTachesAFaire.action";
+import getNbTachesEnCoursAction from "@/src/lib/actions/statNbTachesHome/nbTachesEnCours.action";
+import getNbTachesTermineAction from "@/src/lib/actions/statNbTachesHome/nbTachesTermine.action";
+import getNbTachesTotalAction from "@/src/lib/actions/statNbTachesHome/nbTachesTotal.action";
 import PieStatutChart from "@/src/lib/components/personal/PieStatutChart";
 import StatCard from "@/src/lib/components/personal/StatCard";
 import { TableTache } from "@/src/lib/components/personal/TableTaches";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/src/lib/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/src/lib/components/ui/card";
 
 export default async function Home() {
   //tableau
   const tacheRapide = await getTacheRapideAction();
   // stat taches
-  const nbTachesAFaire = await getNbTachesAFaire();
-  const nbTachesEnCours = await getNbTachesEnCours();
-  const nbTachesTermine = await getNbTachesTermine();
-  const nbTachesTotal = await getNbTachesTotal();
+  const nbTachesAFaire = await getNbTachesAFaireAction();
+  const nbTachesEnCours = await getNbTachesEnCoursAction();
+  const nbTachesTermine = await getNbTachesTermineAction();
+  const nbTachesTotal = await getNbTachesTotalAction();
   // stat graph
   const nbTacheByStatut = await getStatNbStatutTacheAction();
   return (

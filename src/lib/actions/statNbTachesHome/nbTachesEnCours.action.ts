@@ -1,6 +1,7 @@
+"use server";
 import { prisma } from "../../prisma";
 
-export default async function getNbTachesEnCours() {
+export default async function getNbTachesEnCoursAction() {
   const statutIdEnCours = await prisma.statut.findFirst({
     where: {
       nom: "En cours",

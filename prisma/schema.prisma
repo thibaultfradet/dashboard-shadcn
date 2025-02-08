@@ -42,7 +42,7 @@ model TachesTemps {
 model Statut {
   id               Int      @id @default(autoincrement())
   nom              String
-  description      String?
+  description      String
   projets          Projet[]
   taches           Tache[]
 }

@@ -30,9 +30,7 @@ const colors = [
 
 export default function PieStatutChart(data: any) {
   if (Array.isArray(data)) {
-    console.log("est un array : " + data);
   } else {
-    console.log("nest pas un array : " + data);
     if (typeof data === "object" && data !== null) {
       data = Object.values(data);
     }

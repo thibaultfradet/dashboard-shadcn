@@ -18,7 +18,7 @@ export default async function Projets() {
   return (
     <div className="flex flex-col items-center gap-7">
       <div className="w-full text-left flex items-center justify-between m-6 p-6">
-        <h1 className="text-5xl">Liste des projets</h1>
+        <h1 className="text-4xl">Liste des projets</h1>
         <Button asChild>
           <Link href="/projets/add">Créer un projet</Link>
         </Button>

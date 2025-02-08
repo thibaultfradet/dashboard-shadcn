@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { BarChart, Home, Map, User } from "lucide-react";
+import { BarChart, Home, Map, PlusCircle, User } from "lucide-react";
 
 import { NavUser } from "@/src/lib/components/nav-user";
 import { TeamSwitcher } from "@/src/lib/components/team-switcher";
@@ -50,6 +50,11 @@ const data = {
       title: "Projets",
       url: "/projets",
       icon: Map,
+    },
+    {
+      title: "Statuts",
+      url: "/statuts",
+      icon: PlusCircle,
     },
   ],
   // projects: [

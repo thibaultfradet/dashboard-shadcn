@@ -9,7 +9,6 @@ export async function GET(props: { params: { projetId: string } }) {
   try {
     // Await the params to ensure they are loaded
     const { projetId } = await props.params;
-    console.log(projetId);
     // Fetch all records from the 'statut' table using Prisma
     const statuts = await prisma.statut.findUnique({
       where: { id: parseInt(projetId, 10) },
