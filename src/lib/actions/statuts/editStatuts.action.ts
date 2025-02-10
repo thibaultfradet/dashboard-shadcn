@@ -29,8 +29,7 @@ export default async function editStatutsAction(
     });
 
     return { statut: updatedStatut };
-  } catch (error) {
-    console.error("Erreur lors de la modification du statut:", error);
+  } catch {
     return { statut: null };
   }
 }

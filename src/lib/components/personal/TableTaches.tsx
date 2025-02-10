@@ -2,9 +2,7 @@ import { Tache } from "@prisma/client";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -13,7 +11,7 @@ import { Card, CardContent } from "../ui/card";
 
 export function TableTache(taches: Tache[]) {
   return (
-    <Card className="m-5">
+    <Card className="">
       <CardContent>
         <Table>
           <TableHeader>

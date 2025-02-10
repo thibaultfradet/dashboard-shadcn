@@ -1,19 +1,23 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+import DeleteButton from "@/src/lib/components/personal/DeleteButton";
 import { TableTache } from "@/src/lib/components/personal/TableTaches";
 import { Button } from "@/src/lib/components/ui/button";
 import { prisma } from "@/src/lib/prisma";
 import Link from "next/link";
 
 export default async function ViewProjet({
+  children,
   params,
 }: {
-  params: { projetId: string };
+  children: React.ReactNode;
+  params: Promise<{ projetId: string }>;
 }) {
-  const projetIdString = params.projetId;
-  const projetId = parseInt(projetIdString, 10);
+  const { projetId } = await params;
 
   // Fetch the projet data
   const projet = await prisma.projet.findUnique({
-    where: { id: projetId },
+    where: { id: parseInt(projetId, 10) },
     include: {
       taches: {
         include: {
@@ -42,6 +46,9 @@ export default async function ViewProjet({
         </Button>
       </div>
       <TableTache taches={projet.taches} />
+      <div className="w-full flex flex-row-reverse m-6 p-6">
+        <DeleteButton projetId={projet.id} />
+      </div>
     </div>
   );
 }

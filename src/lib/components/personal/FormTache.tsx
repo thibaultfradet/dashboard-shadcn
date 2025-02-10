@@ -14,6 +14,7 @@ import { Label } from "@/src/lib/components/ui/label";
 import { Calendar } from "@/src/lib/components/ui/calendar";
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import getAllStatutsAction from "../../actions/statuts/getAllStatuts.action";
 
 export function FormTache({
   tacheId = null,
@@ -37,9 +38,8 @@ export function FormTache({
 
   useEffect(() => {
     async function fetchStatuts() {
-      const response = await fetch("/api/statuts/");
-      const data = await response.json();
-      setStatuts(data);
+      const tempStatutsAll = await getAllStatutsAction();
+      setStatuts(tempStatutsAll);
     }
 
     fetchStatuts();

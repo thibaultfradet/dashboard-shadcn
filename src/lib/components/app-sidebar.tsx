@@ -26,7 +26,7 @@ const data = {
   user: {
     name: "Tibo",
     email: "fradet.thibault23@gmail.com",
-    avatar: "/avatars/shadcn.jpg",
+    // avatar: "/avatars/shadcn.jpg",
   },
   teams: [
     {
