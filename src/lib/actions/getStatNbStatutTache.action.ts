@@ -1,7 +1,7 @@
 "use server";
 import { prisma } from "../prisma";
 
-export default async function getStatNbStatutTacheAction() {
+export async function getStatNbStatutTacheAction() {
   const nbStatutByTache = await prisma.tache.groupBy({
     by: ["statutId"],
     _count: {
@@ -23,6 +23,34 @@ export default async function getStatNbStatutTacheAction() {
   // Associer les labels aux résultats
   const result = nbStatutByTache.map((t) => ({
     label: statuses.find((s) => s.id === t.statutId)?.nom || "Inconnu",
+    count: t._count.id,
+  }));
+
+  return result;
+}
+
+export async function getNbTachesByProjet() {
+  const nbTacheByProjet = await prisma.tache.groupBy({
+    by: ["projet_id"],
+    _count: {
+      id: true,
+    },
+  });
+
+  // Récupérer les labels des projets associés
+  const statuses = await prisma.projet.findMany({
+    where: {
+      id: { in: nbTacheByProjet.map((t) => t.projet_id) },
+    },
+    select: {
+      id: true,
+      nom: true,
+    },
+  });
+
+  // Associer les labels aux résultats
+  const result = nbTacheByProjet.map((t) => ({
+    label: statuses.find((s) => s.id === t.projet_id)?.nom || "Inconnu",
     count: t._count.id,
   }));
 

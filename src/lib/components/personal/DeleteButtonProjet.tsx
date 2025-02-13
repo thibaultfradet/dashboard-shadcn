@@ -25,6 +25,9 @@ export default function DeleteButtonProjet({ projetId }: { projetId: number }) {
           handleDelete();
         } else {
           setIsConfirm(true);
+          alert(
+            "Merci de valider une deuxième fois pour supprimer le projet définitivement."
+          );
         }
       }}
     >

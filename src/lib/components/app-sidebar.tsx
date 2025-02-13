@@ -21,7 +21,6 @@ import {
 } from "@/src/lib/components/ui/sidebar";
 import { ModeToggle } from "./mode-toggle";
 
-// This is sample data.
 const data = {
   user: {
     name: "Tibo",

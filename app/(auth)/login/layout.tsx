@@ -1,13 +1,18 @@
-export default function loginLayout({
+import { ThemeProvider } from "@/src/lib/components/theme-provider";
+
+export default function LoginLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className={`antialiased`}>
-        <main>{children}</main>
-      </body>
-    </html>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <main className="flex flex-col w-full gap-6">{children}</main>
+    </ThemeProvider>
   );
 }

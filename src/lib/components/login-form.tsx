@@ -9,6 +9,7 @@ import {
 } from "@/src/lib/components/ui/card";
 import { Input } from "@/src/lib/components/ui/input";
 import { Label } from "@/src/lib/components/ui/label";
+import { ModeToggle } from "./mode-toggle";
 
 export function LoginForm({
   className,
@@ -18,9 +19,13 @@ export function LoginForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
+          <div className="flex items-center justify-between">
+            <CardTitle className="text-2xl">Connexion</CardTitle>
+            <ModeToggle />
+          </div>
+
           <CardDescription>
-            Enter your email below to login to your account
+            Entrez votre e-mail pour vous connecter à votre compte.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -37,29 +42,29 @@ export function LoginForm({
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">Mot de passe</Label>
                   <a
                     href="#"
                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                   >
-                    Forgot your password?
+                    Mot de passe oublié ?
                   </a>
                 </div>
                 <Input id="password" type="password" required />
               </div>
               <Button type="submit" className="w-full">
-                Login
+                Se connecter
               </Button>
-              <Button variant="outline" className="w-full">
+              {/* <Button variant="outline" className="w-full">
                 Login with Google
-              </Button>
+              </Button> */}
             </div>
-            <div className="mt-4 text-center text-sm">
+            {/* <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{" "}
               <a href="#" className="underline underline-offset-4">
                 Sign up
               </a>
-            </div>
+            </div> */}
           </form>
         </CardContent>
       </Card>

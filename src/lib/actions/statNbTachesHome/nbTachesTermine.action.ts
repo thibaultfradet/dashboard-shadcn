@@ -2,19 +2,23 @@
 import { prisma } from "../../prisma";
 
 export default async function getNbTachesTermineAction() {
-  const statutIdTermine = await prisma.statut.findFirst({
+  const statutTermine = await prisma.statut.findFirst({
     where: {
-      nom: "Terminé",
+      nom: {
+        contains: "Termin", // Recherche partielle sur "Termin" ~ LIKE
+      },
     },
   });
-  if (!statutIdTermine) {
+
+  if (!statutTermine) {
     return "Aucun statut terminé n'a été trouvé.";
-  } else {
-    const count = await prisma.tache.count({
-      where: {
-        statutId: statutIdTermine!.id,
-      },
-    });
-    return count;
   }
+
+  const count = await prisma.tache.count({
+    where: {
+      statutId: statutTermine.id,
+    },
+  });
+
+  return count;
 }

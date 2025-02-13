@@ -42,7 +42,7 @@ export function FormProjet({ projetId = null }: { projetId?: number | null }) {
     }
 
     fetchData();
-  }, []);
+  });
 
   // Fonction de récupération de données des statuts
   async function fetchStatutsData() {

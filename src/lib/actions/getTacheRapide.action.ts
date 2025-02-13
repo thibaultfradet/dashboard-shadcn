@@ -13,7 +13,7 @@ export default async function getTacheRapideAction() {
     orderBy: {
       estimation_temps: "asc",
     },
-    take: 15,
+    take: 5,
     include: {
       statut: true,
     },

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronRight } from "lucide-react";
-import { cn } from "@/src/lib/utils"; // Assurez-vous d'avoir une fonction utilitaire cn si nécessaire
+import { cn } from "@/src/lib/utils";
 
 interface BreadcrumbProps {
   className?: string;
@@ -15,7 +15,7 @@ export default function Breadcrumb({ className }: BreadcrumbProps) {
 
   return (
     <nav
-      className={cn("flex items-center text-sm text-gray-500", className)}
+      className={cn("flex items-center text-sm text-gray-500 mx-6 ", className)}
       aria-label="Breadcrumb"
     >
       <Link href="/" className="hover:text-gray-700">
