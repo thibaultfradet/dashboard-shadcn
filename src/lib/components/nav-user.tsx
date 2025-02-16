@@ -1,7 +1,6 @@
 "use client";
 
 import { ChevronsUpDown, LogOut } from "lucide-react";
-
 import {
   Avatar,
   AvatarFallback,
@@ -21,6 +20,8 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/src/lib/components/ui/sidebar";
+import { Button } from "./ui/button";
+import logoutAction from "../actions/login/logout.action";
 
 export function NavUser({
   user,
@@ -32,6 +33,10 @@ export function NavUser({
   };
 }) {
   const { isMobile } = useSidebar();
+
+  const handleLogout = async () => {
+    logoutAction();
+  };
 
   return (
     <SidebarMenu>
@@ -72,9 +77,15 @@ export function NavUser({
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <LogOut />
-              Log out
+            <DropdownMenuItem asChild>
+              <Button
+                onClick={() => {
+                  handleLogout();
+                }}
+              >
+                <LogOut />
+                Log out
+              </Button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
