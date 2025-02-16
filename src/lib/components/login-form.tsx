@@ -48,6 +48,7 @@ export function LoginForm({
                 <Input
                   id="email"
                   type="email"
+                  name="email"
                   placeholder="m@example.com"
                   required
                 />
@@ -62,7 +63,7 @@ export function LoginForm({
                     Mot de passe oublié ?
                   </a>
                 </div>
-                <Input id="password" type="password" required />
+                <Input id="password" name="password" type="password" required />
               </div>
               <Button type="submit" className="w-full" value={isPending}>
                 Se connecter
