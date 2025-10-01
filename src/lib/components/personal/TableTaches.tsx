@@ -21,7 +21,7 @@ export function TableTache({
   isHome: boolean;
   projetId: number | null;
 }) {
-  console.log("Valeur de isHome :", isHome, typeof isHome);
+
   return (
     <Card className="">
       <CardContent>

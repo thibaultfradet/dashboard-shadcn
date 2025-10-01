@@ -3,7 +3,6 @@ import { Button } from "@/src/lib/components/ui/button";
 import {
   Card,
   CardHeader,
-  CardTitle,
   CardContent,
 } from "@/src/lib/components/ui/card";
 import { prisma } from "@/src/lib/prisma";

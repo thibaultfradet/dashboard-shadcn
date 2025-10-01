@@ -55,6 +55,11 @@ const data = {
       url: "/statuts",
       icon: PlusCircle,
     },
+    {
+      title: "Fiche",
+      url : "/fiche",
+      icon: PlusCircle,
+    }
   ],
   // projects: [
   //   {
